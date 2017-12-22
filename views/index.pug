@@ -1,0 +1,11 @@
+extends layout
+
+block content
+    h1= title
+    p Welcome to #{title}
+
+    form(method='POST' enctype="multipart/form-data" action='/uploadImage')
+        div.form-group
+            input#file.form-control(type='file', name='file')
+        button.btn.btn-primary(type='submit') upload image
+
