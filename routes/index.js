@@ -583,4 +583,44 @@ router.get('/getAllGroups', function (req, res) {
 });
 
 
+router.post('/deleteGroup', function (req, res) {
+    if (req.body) {
+        ProductGroup.remove({productGroupId: req.body.productGroupId}, function (err, object) {
+            if (!err) {
+                res.send({
+                    status: 200,
+                    data: object,
+                    message: 'deleted successfully.'
+                })
+            } else {
+                res.send({
+                    status: 500,
+                    data: err,
+                    message: 'Problem in query execution.'
+                })
+            }
+        });
+    }
+});
+
+router.post('/deleteCategory', function (req, res) {
+    if (req.body) {
+        ProductCategory.remove({categoryId: req.body.categoryId}, function (err, object) {
+            if (!err) {
+                res.send({
+                    status: 200,
+                    data: object,
+                    message: 'deleted successfully.'
+                })
+            } else {
+                res.send({
+                    status: 500,
+                    data: err,
+                    message: 'Problem in query execution.'
+                })
+            }
+        });
+    }
+});
+
 module.exports = router;
